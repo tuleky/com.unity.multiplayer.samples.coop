@@ -9,8 +9,8 @@ namespace BossRoom
     [CreateAssetMenu(menuName = "GameData/CharacterClass", order = 1)]
     public class CharacterClass : ScriptableObject
     {
-        [Tooltip("which character this data represents")]
-        public CharacterTypeEnum CharacterType;
+        [Tooltip("which character this data represents"), HideInInspector]
+        public int CharacterTypeRuntimeID;
 
         [Tooltip("skill1 is usually the character's default attack")]
         public ActionType Skill1;

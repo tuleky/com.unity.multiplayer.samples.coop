@@ -249,8 +249,8 @@ namespace BossRoom.Server
         /// </summary>
         private float GetBaseMovementSpeed()
         {
-            CharacterClass characterClass = GameDataSource.Instance.CharacterDataByType[m_CharLogic.NetState.CharacterType];
-            Assert.IsNotNull(characterClass, $"No CharacterClass data for character type {m_CharLogic.NetState.CharacterType}");
+            CharacterClass characterClass = GameDataSource.Instance.CharacterDataByRuntimeID[m_CharLogic.NetState.CharacterTypeRuntimeID];
+            Assert.IsNotNull(characterClass, $"No CharacterClass data for character type {m_CharLogic.NetState.CharacterTypeRuntimeID}");
             return characterClass.Speed;
         }
 

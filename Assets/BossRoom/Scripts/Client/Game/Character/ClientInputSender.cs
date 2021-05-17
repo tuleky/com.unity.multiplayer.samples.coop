@@ -95,7 +95,7 @@ namespace BossRoom.Client
         /// <summary>
         /// Convenience getter that returns our CharacterData
         /// </summary>
-        CharacterClass CharacterData => GameDataSource.Instance.CharacterDataByType[m_NetworkCharacter.CharacterType];
+        CharacterClass CharacterData => GameDataSource.Instance.CharacterDataByRuntimeID[m_NetworkCharacter.CharacterTypeRuntimeID];
 
         public override void NetworkStart()
         {

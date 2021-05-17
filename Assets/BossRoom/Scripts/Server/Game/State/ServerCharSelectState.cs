@@ -128,7 +128,7 @@ namespace BossRoom.Server
             foreach (CharSelectData.LobbyPlayerState playerInfo in CharSelectData.LobbyPlayers)
             {
                 lobbyResults.Choices[playerInfo.ClientId] = new LobbyResults.CharSelectChoice(playerInfo.PlayerNum,
-                    CharSelectData.LobbySeatConfigurations[playerInfo.SeatIdx].Class,
+                    CharSelectData.LobbySeatConfigurations[playerInfo.SeatIdx].Class.GetInstanceID(),
                     CharSelectData.LobbySeatConfigurations[playerInfo.SeatIdx].CharacterArtIdx);
             }
             GameStateRelay.SetRelayObject(lobbyResults);

@@ -14,13 +14,13 @@ namespace BossRoom.Server
         public struct CharSelectChoice
         {
             public int PlayerNumber;
-            public CharacterTypeEnum Class;
+            public int ClassRuntimeID;
             public int Appearance;
 
-            public CharSelectChoice(int playerNumber, CharacterTypeEnum characterClass, int appearanceIdx)
+            public CharSelectChoice(int playerNumber, int characterClassRuntimeID, int appearanceIdx)
             {
                 PlayerNumber = playerNumber;
-                Class = characterClass;
+                ClassRuntimeID = characterClassRuntimeID;
                 Appearance = appearanceIdx;
             }
         }

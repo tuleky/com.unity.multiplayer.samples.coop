@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace BossRoom
@@ -13,7 +14,7 @@ namespace BossRoom
         [SerializeField]
         private ActionDescription[] m_ActionData;
 
-        private Dictionary<CharacterTypeEnum, CharacterClass> m_CharacterDataMap;
+        private Dictionary<int, CharacterClass> m_CharacterDataMap;
         private Dictionary<ActionType, ActionDescription> m_ActionDataMap;
 
         /// <summary>
@@ -24,20 +25,20 @@ namespace BossRoom
         /// <summary>
         /// Contents of the CharacterData list, indexed by CharacterType for convenience.
         /// </summary>
-        public Dictionary<CharacterTypeEnum, CharacterClass> CharacterDataByType
+        public Dictionary<int, CharacterClass> CharacterDataByRuntimeID
         {
             get
             {
                 if( m_CharacterDataMap == null )
                 {
-                    m_CharacterDataMap = new Dictionary<CharacterTypeEnum, CharacterClass>();
+                    m_CharacterDataMap = new Dictionary<int, CharacterClass>();
                     foreach (CharacterClass data in m_CharacterData)
                     {
-                        if( m_CharacterDataMap.ContainsKey(data.CharacterType))
+                        if( m_CharacterDataMap.ContainsKey(data.CharacterTypeRuntimeID))
                         {
-                            throw new System.Exception($"Duplicate character definition detected: {data.CharacterType}");
+                            throw new System.Exception($"Duplicate character definition detected: {data.CharacterTypeRuntimeID}");
                         }
-                        m_CharacterDataMap[data.CharacterType] = data;
+                        m_CharacterDataMap[data.CharacterTypeRuntimeID] = data;
                     }
                 }
                 return m_CharacterDataMap;
@@ -76,6 +77,18 @@ namespace BossRoom
 
             DontDestroyOnLoad(gameObject);
             Instance = this;
+
+            CreateRuntimeInstanceID();
+        }
+
+        void CreateRuntimeInstanceID()
+        {
+            m_CharacterDataMap = new Dictionary<int, CharacterClass>();
+            for (int i = 0; i < m_CharacterData.Length; i++)
+            {
+                int runtimeID = m_CharacterData[i].GetInstanceID();
+                m_CharacterDataMap[runtimeID] = m_CharacterData[i];
+            }
         }
     }
 }

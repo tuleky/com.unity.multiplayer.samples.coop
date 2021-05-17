@@ -53,7 +53,8 @@ namespace BossRoom.Server
                 // We don't know about this client ID! That probably means they joined the game late, after the lobby was closed.
                 // We don't yet handle this scenario well (e.g. showing them a "wait for next game" screen, maybe?),
                 // so for now we just let them join. We'll pretend that they made them some generic character choices.
-                returnValue = new LobbyResults.CharSelectChoice(-1, CharacterTypeEnum.Tank, 0);
+                // TODO: Right now we take int for characterClass but we don't know the runtimeID's of the characterClasses
+                returnValue = new LobbyResults.CharSelectChoice(-1, 0, 0);
                 m_LobbyResults.Choices[clientId] = returnValue;
             }
             return returnValue;
@@ -184,7 +185,7 @@ namespace BossRoom.Server
 
             string playerName = m_ServerNetPortal.GetPlayerName(clientId, lobbyResults.PlayerNumber);
 
-            netState.SetCharacterType(lobbyResults.Class, lobbyResults.Appearance);
+            netState.SetCharacterType(lobbyResults.ClassRuntimeID, lobbyResults.Appearance);
             netState.Name = playerName;
 
             // spawn players characters with destroyWithScene = true

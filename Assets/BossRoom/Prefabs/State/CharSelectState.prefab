@@ -80,6 +80,7 @@ MonoBehaviour:
     Color: {r: 0.99607843, g: 0.6745098, b: 0.03137255, a: 1}
   - Indicator: {fileID: 8070130267694257472, guid: 6e827080c734678449d9b9a2b63ed6bd, type: 3}
     Color: {r: 0.19215687, g: 0.03137255, b: 0.9882353, a: 1}
+  m_NumPlayersText: {fileID: 0}
   m_UIElementsForNoSeatChosen: []
   m_UIElementsForSeatChosen: []
   m_UIElementsForLobbyEnding: []
@@ -99,23 +100,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b117c7cd3ae70e458a5b755a4096609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CharacterClasses: []
   LobbySeatConfigurations:
-  - Class: 0
-    CharacterArtIdx: 1
-  - Class: 0
+  - Class: {fileID: 11400000, guid: 358012a7531bbb644bc269602d1ddaed, type: 2}
     CharacterArtIdx: 0
-  - Class: 1
-    CharacterArtIdx: 3
-  - Class: 1
+  - Class: {fileID: 11400000, guid: db88eb88b930a224fa45fc4e1f943088, type: 2}
     CharacterArtIdx: 2
-  - Class: 2
-    CharacterArtIdx: 5
-  - Class: 2
+  - Class: {fileID: 11400000, guid: b9743318c3216254bb32b815c6edcb7b, type: 2}
     CharacterArtIdx: 4
-  - Class: 3
-    CharacterArtIdx: 7
-  - Class: 3
+  - Class: {fileID: 11400000, guid: 131bd29e682b4e34aa5c8b1f8ba4a48d, type: 2}
     CharacterArtIdx: 6
+  - Class: {fileID: 11400000, guid: 358012a7531bbb644bc269602d1ddaed, type: 2}
+    CharacterArtIdx: 1
+  - Class: {fileID: 11400000, guid: db88eb88b930a224fa45fc4e1f943088, type: 2}
+    CharacterArtIdx: 3
+  - Class: {fileID: 11400000, guid: b9743318c3216254bb32b815c6edcb7b, type: 2}
+    CharacterArtIdx: 5
+  - Class: {fileID: 11400000, guid: 131bd29e682b4e34aa5c8b1f8ba4a48d, type: 2}
+    CharacterArtIdx: 7
 --- !u!114 &1092063945021251778
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -129,7 +129,7 @@ namespace BossRoom
         {
             get
             {
-                return GameDataSource.Instance.CharacterDataByType[CharacterType];
+                return GameDataSource.Instance.CharacterDataByRuntimeID[CharacterTypeRuntimeID];
             }
         }
 
@@ -139,10 +139,10 @@ namespace BossRoom
         /// <summary>
         /// Character Type. This value is populated during character selection.
         /// </summary>
-        public CharacterTypeEnum CharacterType
+        public int CharacterTypeRuntimeID
         {
-            get { return m_NetworkCharacterTypeState.CharacterType.Value; }
-            set { m_NetworkCharacterTypeState.CharacterType.Value = value; }
+            get { return m_NetworkCharacterTypeState.CharacterTypeRuntimeID.Value; }
+            set { m_NetworkCharacterTypeState.CharacterTypeRuntimeID.Value = value; }
         }
 
         [SerializeField]
@@ -179,9 +179,9 @@ namespace BossRoom
             ReceivedClientInput?.Invoke(movementTarget);
         }
 
-        public void SetCharacterType(CharacterTypeEnum playerType, int playerAppearance)
+        public void SetCharacterType(int playerTypeRuntimeID, int playerAppearance)
         {
-            CharacterType = playerType;
+            CharacterTypeRuntimeID = playerTypeRuntimeID;
             CharacterAppearance.Value = playerAppearance;
         }
 

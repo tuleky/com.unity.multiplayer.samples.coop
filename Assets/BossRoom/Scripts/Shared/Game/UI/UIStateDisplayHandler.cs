@@ -107,11 +107,11 @@ namespace BossRoom
                 m_NetworkCharacterTypeState = GetComponent<NetworkCharacterTypeState>();
                 if (m_NetworkCharacterTypeState != null)
                 {
-                    m_NetworkCharacterTypeState.CharacterType.OnValueChanged += CharacterTypeChanged;
+                    m_NetworkCharacterTypeState.CharacterTypeRuntimeID.OnValueChanged += CharacterTypeChanged;
 
                     // we initialize the health bar with our current character type as well
-                    CharacterTypeChanged(m_NetworkCharacterTypeState.CharacterType.Value,
-                        m_NetworkCharacterTypeState.CharacterType.Value);
+                    CharacterTypeChanged(m_NetworkCharacterTypeState.CharacterTypeRuntimeID.Value,
+                        m_NetworkCharacterTypeState.CharacterTypeRuntimeID.Value);
                 }
 
                 if (m_NetworkHealthState != null)
@@ -131,7 +131,7 @@ namespace BossRoom
 
             if (m_NetworkCharacterTypeState != null)
             {
-                m_NetworkCharacterTypeState.CharacterType.OnValueChanged -= CharacterTypeChanged;
+                m_NetworkCharacterTypeState.CharacterTypeRuntimeID.OnValueChanged -= CharacterTypeChanged;
             }
 
             if (m_NetworkHealthState != null)
@@ -141,9 +141,9 @@ namespace BossRoom
             }
         }
 
-        void CharacterTypeChanged(CharacterTypeEnum previousValue, CharacterTypeEnum newValue)
+        void CharacterTypeChanged(int previousValue, int newValue)
         {
-            var characterClass = GameDataSource.Instance.CharacterDataByType[newValue];
+            var characterClass = GameDataSource.Instance.CharacterDataByRuntimeID[newValue];
             if (characterClass)
             {
                 m_BaseHP = characterClass.BaseHP;

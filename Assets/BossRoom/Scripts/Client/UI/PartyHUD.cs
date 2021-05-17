@@ -70,9 +70,9 @@ namespace BossRoom.Visual
             m_PartyHealthSliders[0].value = hp;
         }
 
-        private int GetMaxHPForClass(CharacterTypeEnum characterType)
+        private int GetMaxHPForClass(int characterTypeRuntimeID)
         {
-            return GameDataSource.Instance.CharacterDataByType[characterType].BaseHP.Value;
+            return GameDataSource.Instance.CharacterDataByRuntimeID[characterTypeRuntimeID].BaseHP.Value;
         }
 
         /// <summary>
@@ -97,11 +97,11 @@ namespace BossRoom.Visual
 
         private void SetUIFromSlotData(int slot, NetworkCharacterState netState)
         {
-            m_PartyHealthSliders[slot].maxValue = GetMaxHPForClass(netState.CharacterType);
+            m_PartyHealthSliders[slot].maxValue = GetMaxHPForClass(netState.CharacterTypeRuntimeID);
             m_PartyHealthSliders[slot].value = netState.HitPoints;
             m_PartyNames[slot].text = GetPlayerName(m_PartyIds[slot]);
 
-            int symbol = (int)netState.CharacterType;
+            int symbol = (int)netState.CharacterTypeRuntimeID;
             if (symbol > m_ClassSymbols.Length)
             {
                 return;

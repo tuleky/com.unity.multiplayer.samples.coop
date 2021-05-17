@@ -17,6 +17,8 @@ namespace BossRoom
     /// </summary>
     public class CharSelectData : NetworkBehaviour
     {
+        public CharacterClass[] m_CharacterClasses;
+
         public enum SeatState
         {
             Inactive,
@@ -32,13 +34,8 @@ namespace BossRoom
         [Serializable]
         public struct LobbySeatConfiguration
         {
-            public CharacterTypeEnum Class;
+            public CharacterClass Class;
             public int CharacterArtIdx;
-            public LobbySeatConfiguration(CharacterTypeEnum charClass, int artIdx)
-            {
-                Class = charClass;
-                CharacterArtIdx = artIdx;
-            }
         }
 
         /// <summary>
@@ -46,18 +43,7 @@ namespace BossRoom
         /// Note: this must match up with the order of classes/appearances in the lobby UI elements!
         /// </summary>
         [SerializeField]
-        public LobbySeatConfiguration[] LobbySeatConfigurations = new LobbySeatConfiguration[]
-        {
-            new LobbySeatConfiguration(CharacterTypeEnum.Tank, 0),
-            new LobbySeatConfiguration(CharacterTypeEnum.Archer, 2),
-            new LobbySeatConfiguration(CharacterTypeEnum.Mage, 4),
-            new LobbySeatConfiguration(CharacterTypeEnum.Rogue, 6),
-            new LobbySeatConfiguration(CharacterTypeEnum.Tank, 1),
-            new LobbySeatConfiguration(CharacterTypeEnum.Archer, 3),
-            new LobbySeatConfiguration(CharacterTypeEnum.Mage, 5),
-            new LobbySeatConfiguration(CharacterTypeEnum.Rogue, 7),
-        };
-
+        public LobbySeatConfiguration[] LobbySeatConfigurations;
         public const int k_MaxLobbyPlayers = 8;
 
         /// <summary>
